@@ -29,6 +29,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+build_log.txt
+link_results.json
+server.log
+server-3100.log
+test_output.txt
 
 # env files (can opt-in for committing if needed)
 .env*
@@ -44,3 +49,9 @@ next-env.d.ts
 .firebase
 .firebaserc-*
 firebase-debug.log
+
+# legacy generated artifacts
+legacy_source/dist
+legacy_source/playwright-report
+legacy_source/test-results
+legacy_source/.playwright-cli
