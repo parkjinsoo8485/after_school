@@ -1,0 +1,30 @@
+- generic [ref=e27]:
+  - complementary [ref=e28]:
+    - heading "After School" [level=2] [ref=e29]
+    - navigation [ref=e30]:
+      - link "Dashboard" [ref=e31] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Data" [ref=e32] [cursor=pointer]:
+        - /url: /data
+      - link "Profile" [ref=e33] [cursor=pointer]:
+        - /url: /profile
+      - link "Admin" [ref=e34] [cursor=pointer]:
+        - /url: /admin
+  - main [ref=e35]:
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - strong [ref=e38]: Admin User
+        - text: admin
+      - button "Logout" [ref=e39] [cursor=pointer]
+    - generic [ref=e40]:
+      - heading "Dashboard" [level=1] [ref=e41]
+      - generic [ref=e42]:
+        - article [ref=e43]:
+          - heading "My Items" [level=3] [ref=e44]
+          - strong [ref=e45]: "0"
+        - article [ref=e46]:
+          - heading "Active Items" [level=3] [ref=e47]
+          - strong [ref=e48]: "0"
+        - article [ref=e49]:
+          - heading "Total Users" [level=3] [ref=e50]
+          - strong [ref=e51]: "0"

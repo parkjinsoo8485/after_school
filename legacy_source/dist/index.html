@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="light" lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>방과후학교 포털 - 홈</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Sans KR", "Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            letter-spacing: -0.01em;
+        }
+    </style>
+    <script src="/ui_interactive.js"></script>
+
+
+  <script type="module" crossorigin src="/assets/global-auth-BbaQ_MtY.js"></script>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 md:px-20 py-4 sticky top-0 z-50 border-b border-slate-50 dark:border-slate-800">
+                <div class="flex items-center gap-12">
+                    <div class="flex items-center gap-2 text-primary cursor-pointer"
+                        onclick="location.href='/index.html'">
+                        <span class="material-symbols-outlined text-2xl">school</span>
+                        <h2 class="text-slate-900 dark:text-white text-base font-bold tracking-tight">방과후학교 포털</h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a class="text-primary text-sm font-semibold" href="/index.html">홈</a>
+                        <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors"
+                            href="/src/after_school_course_enrollment_list_34b717b7.html">강좌 목록</a>
+                        <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors"
+                            href="/src/공지사항_목록_페이지_02bece20.html">공지사항</a>
+                        <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors"
+                            href="/src/강사_전용_통합_관리_대시보드_a40cc60e.html">강사 소개</a>
+                        <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors"
+                            href="/screens/index.html">Screens 페이지</a>
+                    </nav>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div
+                        class="hidden lg:flex items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-1.5 w-64">
+                        <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+                        <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-slate-400"
+                            placeholder="강좌 검색..." type="text">
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span id="auth-user-info" class="text-slate-600 dark:text-slate-300 text-sm font-semibold" style="display:none"></span>
+                        <a id="auth-login-btn" href="/src/login.html"
+                            class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors">로그인</a>
+                        <a id="auth-logout-btn" href="#"
+                            class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" style="display:none">로그아웃</a>
+                        <a id="auth-signup-btn" href="/src/signup.html"
+                            class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all">회원가입</a>
+                        <a id="auth-mypage-btn" href="/src/학생용_마이페이지_576a1e5f.html"
+                            class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all" style="display:none">마이페이지</a>
+                    </div>
+                </div>
+            </header>
+            <main class="flex flex-col flex-1 px-6 md:px-20 lg:px-64">
+                <section class="py-20 md:py-32 flex flex-col items-center text-center">
+                    <div class="max-w-3xl">
+                        <span
+                            class="inline-block px-3 py-1 mb-6 text-xs font-bold text-primary bg-primary/5 rounded-full uppercase tracking-wider">2024
+                            가을 학기 수강 신청</span>
+                        <h1
+                            class="text-slate-900 dark:text-white text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] mb-8">
+                            교실 밖에서 펼쳐지는<br>학생들의 꿈과 미래
+                        </h1>
+                        <p
+                            class="text-slate-500 dark:text-slate-400 text-lg md:text-xl font-normal leading-relaxed mb-10 max-w-2xl mx-auto">
+                            창의성, 학업 우수성, 사회적 성장을 돕는 다양한 방과후 프로그램에 참여하세요.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="/src/수강_바구니_및_결제_페이지_72799e0d.html"
+                                class="min-w-[160px] h-14 flex items-center justify-center px-8 bg-primary text-white text-base font-bold rounded-full hover:shadow-xl hover:bg-blue-600 transition-all">
+                                지금 신청하기
+                            </a>
+                            <a href="/src/상세_출결_관리_달력_492abeba.html"
+                                class="min-w-[160px] h-14 flex items-center justify-center px-8 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-base font-bold rounded-full border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition-all">
+                                일정 보기
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-16 w-full max-w-4xl">
+                        <div
+                            class="aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-slate-100 dark:border-slate-800">
+                            <div class="w-full h-full bg-center bg-cover"
+                                style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBUXhnRII5SrlIiii3SvXlvU5yuh3JoaiUfPpBAs86Rng1iUF9uG6UvSNYCYDV-S3azbxR-Ofpi3I0hmF7HjGh_-qYWNCu0mePVUGjjq9fFM-iuOZEMQ0Ecag9l7B6wVCsj1hH3W0HreVUFYFLCb5NFsTRrRdPBcmWGp8xbWcmEvSE9D40F-Lg4jYTyzV0UKlEuIC4lwEL8uAAjrsX3TbwcvSllIk5D_i0S-y_fn8AS4zszOgeeTa2uu55UwGjF_RwfefjQkffLwXPL&quot;);">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="py-24">
+                    <div class="flex items-end justify-between mb-12">
+                        <div>
+                            <h2 class="text-slate-900 dark:text-white text-2xl font-bold tracking-tight mb-2">최근 공지사항
+                            </h2>
+                            <div class="h-1 w-12 bg-primary rounded-full"></div>
+                        </div>
+                        <a class="text-slate-400 text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+                            href="src/공지사항_목록_페이지_02bece20.html">
+                            전체보기 <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <a href="/src/공지사항_목록_페이지_02bece20.html"
+                            class="group flex flex-col p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-md transition-all cursor-pointer">
+                            <span class="text-primary text-[10px] font-bold uppercase tracking-widest mb-2">공지</span>
+                            <span class="text-slate-400 text-xs font-medium mb-4">2024.05.20</span>
+                            <h3
+                                class="text-slate-900 dark:text-white text-lg font-bold leading-snug group-hover:text-primary transition-colors">
+                                2025 학기 수강신청 안내</h3>
+                            <p class="text-slate-400 text-sm mt-3 line-clamp-2">2025년도 방과후 프로그램 수강신청이 시작됩니다. 자세한 일정을 확인해주세요.</p>
+                        </a>
+                        <a href="/src/공지사항_목록_페이지_02bece20.html"
+                            class="group flex flex-col p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-md transition-all cursor-pointer">
+                            <span class="text-primary text-[10px] font-bold uppercase tracking-widest mb-2">공지</span>
+                            <span class="text-slate-400 text-xs font-medium mb-4">2024.05.18</span>
+                            <h3
+                                class="text-slate-900 dark:text-white text-lg font-bold leading-snug group-hover:text-primary transition-colors">
+                                신규 코딩 클럽 개설 안내</h3>
+                            <p class="text-slate-400 text-sm mt-3 line-clamp-2">창의 코딩 교실 신규 개설! 초등학교 4~6학년 대상으로 모집합니다.</p>
+                        </a>
+                        <a href="/src/공지사항_목록_페이지_02bece20.html"
+                            class="group flex flex-col p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:shadow-md transition-all cursor-pointer">
+                            <span class="text-primary text-[10px] font-bold uppercase tracking-widest mb-2">공지</span>
+                            <span class="text-slate-400 text-xs font-medium mb-4">2024.05.10</span>
+                            <h3
+                                class="text-slate-900 dark:text-white text-lg font-bold leading-snug group-hover:text-primary transition-colors">
+                                학부모-교사 간담회 일정</h3>
+                            <p class="text-slate-400 text-sm mt-3 line-clamp-2">5월 가정의 달을 맞이하여 학부모 초청 공개 수업이 진행됩니다.</p>
+                        </a>
+                    </div>
+                </section>
+                <section class="py-24">
+                    <div class="flex items-end justify-between mb-12">
+                        <div>
+                            <h2 class="text-slate-900 dark:text-white text-2xl font-bold tracking-tight mb-2">인기 강좌</h2>
+                            <div class="h-1 w-12 bg-primary rounded-full"></div>
+                        </div>
+                        <a class="text-slate-400 text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+                            href="/src/after_school_course_enrollment_list_34b717b7.html">
+                            전체 강좌 <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                        <a href="/src/after_school_course_enrollment_list_34b717b7.html" class="group cursor-pointer">
+                            <div
+                                class="relative overflow-hidden rounded-2xl aspect-square mb-5 border border-slate-100 dark:border-slate-800">
+                                <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
+                                    style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBGd4zZKfiGx1YQ4tGKvYwNbUSyplBeKXKo3weZC6rKBYDqyGiWHdEkLdtiykhP_8Z4z7FBipGI6RqTQVHTIQBOwm28FsvVBDjTgl6pVI75adR5Yh1miTBcZj_8uvgQDPKs9fX36MO9IwP_A4hWCAtBs5xJArAlkuhvXG_T1zTuf2tYi_ibc2enMHNPeDHtd2UpGfvlKYMDY2ChGBpMzuocxY23vFnlzh0G4lACpfi_AoEyBoGhD8xaP-oHDODgihXVHZPs6-g_lBQt&quot;);"> 
+                                </div>
+                            </div>
+                            <span
+                                class="text-primary text-[10px] font-bold uppercase tracking-widest mb-2 block">미술</span>
+                            <h3
+                                class="text-slate-900 dark:text-white font-bold text-lg mb-1 group-hover:text-primary transition-colors">
+                                수채화 교실</h3>
+                            <p class="text-slate-400 text-sm">월, 수 • 오후 4시</p>
+                        </a>
+                        <a href="/src/after_school_course_enrollment_list_34b717b7.html" class="group cursor-pointer">
+                            <div
+                                class="relative overflow-hidden rounded-2xl aspect-square mb-5 border border-slate-100 dark:border-slate-800">
+                                <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
+                                    style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDDn3G5_ugPWfZ3I48ICN5iLpUEtwoXA-4ko1F5hwbLJxK_63x7GRjCGsvhNE1V7os2f6OYEdCPHIw3NG8UWd7G9MqWtMAul96aA1T3McW2anXqvgPGLHmMPuScYXk2QulgDMlW84qTLm6sn3TNdsqTDbmmtuuuCpfgU7l3JYXp9XtHPCcwIN6CBSpYxuWXVv5kIEVXetvdxpjvHKcInGAkmPK9ye3jzxq5EdRb4RUfjFyec9dRHlROABCioCedZput5Se_aD5YctZJ&quot;);"> 
+                                </div>
+                            </div>
+                            <span
+                                class="text-primary text-[10px] font-bold uppercase tracking-widest mb-2 block">STEM</span>
+                            <h3
+                                class="text-slate-900 dark:text-white font-bold text-lg mb-1 group-hover:text-primary transition-colors">
+                                심화 로봇 공학</h3>
+                            <p class="text-slate-400 text-sm">화, 목 • 오후 3시</p>
+                        </a>
+                        <a href="/src/after_school_course_enrollment_list_34b717b7.html" class="group cursor-pointer">
+                            <div
+                                class="relative overflow-hidden rounded-2xl aspect-square mb-5 border border-slate-100 dark:border-slate-800">
+                                <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
+                                    style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAJfYLmSWCnnJFsynHegjLhx7dEio2WjAAsFEMV9t90T_dfH6h78ev8H9yiPWNFxjVJNvFA0DmbKsWZey4qh0XPtPo5l8DaeZIVs8aeHYLAKhK9UVdN71SZVBMy9cEWJUp3K1k5RyVinMMIF2_J0sK_W8JnubQz5L6RPJknNVYufNmV41__mgxmUvgIdxcrfuiyl-I4KRauVOKvX-a7X-BHZO7oyDsNjSMeLCsTGoTjwU4O7GhGeRi5mEwDcYb_pA8wJbe2VpVTBdKs&quot;);"> 
+                                </div>
+                            </div>
+                            <span
+                                class="text-primary text-[10px] font-bold uppercase tracking-widest mb-2 block">음악</span>
+                            <h3
+                                class="text-slate-900 dark:text-white font-bold text-lg mb-1 group-hover:text-primary transition-colors">
+                                기타 기초반</h3>
+                            <p class="text-slate-400 text-sm">금 • 오후 4시</p>
+                        </a>
+                        <a href="/src/after_school_course_enrollment_list_34b717b7.html" class="group cursor-pointer">
+                            <div
+                                class="relative overflow-hidden rounded-2xl aspect-square mb-5 border border-slate-100 dark:border-slate-800">
+                                <div class="w-full h-full bg-center bg-cover transition-transform duration-700 group-hover:scale-105"
+                                    style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCxVSFA0snNwSCfmvGfoPYppjKRIludAyrVoIi64Fp8UEBhF4rWbSmOyOs997F70E8SrnxtdkITmupAVOzGxRZ3XF6QTqy-jTs9ZzzriBppI3bL2d4pJd4mP2P1uv9CIguDDR9JudWhBLgVc6GAvBVWGzU4re7mVmb_O7zGxtwh7oOpTsbIUutts-7PAAMWlMdAr8n4XcFSqjE999e0uee54Ho73FYHnOP5SZwapM_tXEdDPB3xInZ17Mt9T2d03GdJ9VyV5CWtFcwj&quot;);"> 
+                                </div>
+                            </div>
+                            <span
+                                class="text-primary text-[10px] font-bold uppercase tracking-widest mb-2 block">체육</span>
+                            <h3
+                                class="text-slate-900 dark:text-white font-bold text-lg mb-1 group-hover:text-primary transition-colors">
+                                유소년 축구 리그</h3>
+                            <p class="text-slate-400 text-sm">월, 금 • 오후 3:30</p>
+                        </a>
+                    </div>
+                </section>
+            </main>
+            <footer
+                class="bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 py-16 px-6 md:px-20">
+                <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+                    <div class="flex flex-col gap-6">
+                        <div class="flex items-center gap-2 text-primary">
+                            <span class="material-symbols-outlined">school</span>
+                            <span class="font-bold text-lg text-slate-900 dark:text-white tracking-tight">방과후학교
+                                포털</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            오늘의 배움으로 내일의 리더를 키웁니다.<br>
+                            2010년부터 학생들의 미래를 지원하고 있습니다.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-6">주요 서비스</h4>
+                        <ul class="flex flex-col gap-4 text-sm text-slate-500 dark:text-slate-400">
+                            <li><a class="hover:text-primary transition-colors"
+                                    href="/src/after_school_course_enrollment_list_34b717b7.html">강좌 신청</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="/index.html">기관 소개</a></li>
+                            <li><a class="hover:text-primary transition-colors"
+                                    href="/src/after_school_program_home_page_0990902d.html">프로그램 안내</a></li>
+                            <li><a class="hover:text-primary transition-colors"
+                                    href="/src/inquiry.html">고객 문의</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-6">고객 지원</h4>
+                        <ul class="flex flex-col gap-4 text-sm text-slate-500 dark:text-slate-400">
+                            <li><a class="hover:text-primary transition-colors" href="/index.html">자주 묻는 질문</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="/terms.html">이용 약관</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="/privacy.html">개인정보 처리방침</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="max-w-[1200px] mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-slate-400 text-xs">© 2024 방과후학교 포털 프로그램. All rights reserved.</p>
+                    <div class="flex gap-6 text-slate-400">
+                        <a class="hover:text-primary" href="/index.html"><span
+                                class="material-symbols-outlined text-xl">language</span></a>
+                        <a class="hover:text-primary" href="/index.html"><span
+                                class="material-symbols-outlined text-xl">alternate_email</span></a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

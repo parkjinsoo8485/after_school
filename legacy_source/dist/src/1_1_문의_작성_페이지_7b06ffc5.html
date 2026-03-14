@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans KR", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>1:1 문의 작성 - 방과후 프로그램</title>
+<script src="/ui_interactive.js"></script>
+
+  <script type="module" crossorigin src="/assets/global-auth-BbaQ_MtY.js"></script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-3">
+<div class="flex items-center gap-4">
+<div class="text-primary size-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">방과후 프로그램</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="/src/after_school_course_enrollment_list_34b717b7.html">수강신청</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="/src/학생용_마이페이지_576a1e5f.html">마이페이지</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="/src/공지사항_목록_페이지_02bece20.html">공지사항</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="/index.html">문의하기</a>
+</nav>
+<div class="bg-slate-200 dark:bg-slate-700 rounded-full size-10 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="사용자 프로필 이미지" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPUMXaC3DG_E3950iz-y1yN6tnw_RvU_zreF1MhZr8LmsZifX3-mRrz7uPkzyRT5IyP_ebUyKbtQ4ZioUBt0yvSay9gwXq4DQuD0vDA0TY6JO9Odv6m0xsbERRFJiy2FK26MkWeBoU0TkexPUv5kXfwKLo49X_BeaS9SEKz9KfDnvDe86uCllc93yIm8tVYQSsIy86p1_P31jYcPBIgdIsgK86XWRr1zN9Ws4SZORLfzhJmqDD6z143VJvehakYUYnH0Gy2XjgoAus">
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex justify-center py-10 px-4">
+<div class="max-w-[800px] w-full bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 md:p-12">
+<!-- Breadcrumb & Header -->
+<div class="mb-10 text-center">
+<div class="flex items-center justify-center gap-2 text-slate-500 text-sm mb-4">
+<a class="hover:text-primary" href="/index.html">홈</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">1:1 문의하기</span>
+</div>
+<h1 class="text-3xl font-black text-slate-900 dark:text-white mb-3">1:1 문의 작성</h1>
+<p class="text-slate-500 dark:text-slate-400">궁금하신 점을 남겨주시면 담당자가 확인 후 답변해 드리겠습니다.</p>
+</div>
+<!-- Form -->
+<form class="space-y-6">
+<!-- Category Selection -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            카테고리 <span class="text-red-500">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+<option disabled="" selected="" value="">문의 유형을 선택해주세요</option>
+<option value="registration">수강신청</option>
+<option value="payment">결제</option>
+<option value="attendance">출결</option>
+<option value="error">시스템 오류</option>
+<option value="etc">기타</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Title -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            제목 <span class="text-red-500">*</span>
+</label>
+<input class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="제목을 입력해주세요" type="text">
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            문의 내용 <span class="text-red-500">*</span>
+</label>
+<textarea class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none" placeholder="상세한 문의 내용을 입력해주세요. 구체적으로 작성해 주시면 더욱 정확한 답변이 가능합니다." rows="8"></textarea>
+</div>
+<!-- File Attachment -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">파일 첨부</label>
+<div class="flex items-center justify-center w-full">
+<label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-lg cursor-pointer bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+<div class="flex flex-col items-center justify-center pt-5 pb-6">
+<span class="material-symbols-outlined text-slate-400 mb-2">cloud_upload</span>
+<p class="text-sm text-slate-500 dark:text-slate-400"><span class="font-semibold text-primary">클릭하여 파일 업로드</span> 또는 드래그 앤 드롭</p>
+<p class="text-xs text-slate-400 mt-1">PNG, JPG, PDF (최대 10MB)</p>
+</div>
+<input class="hidden" type="file">
+</label>
+</div>
+</div>
+<!-- Privacy Policy Agreement -->
+<div class="bg-slate-50 dark:bg-slate-800/40 p-4 rounded-lg flex items-start gap-3">
+<div class="flex items-center h-5">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" id="privacy" type="checkbox">
+</div>
+<div class="text-sm">
+<label class="font-medium text-slate-700 dark:text-slate-300" for="privacy">개인정보 수집 및 이용 동의 <span class="text-red-500">(필수)</span></label>
+<p class="text-slate-500 text-xs mt-1">문의 응대 및 기록 관리를 위해 성명, 연락처 등 기재된 개인정보를 수집합니다. 수집된 정보는 목적 달성 후 지체 없이 파기됩니다.</p>
+</div>
+</div>
+<!-- Buttons -->
+<div class="flex gap-4 pt-4">
+<button class="flex-1 py-4 px-6 rounded-lg font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" type="button">
+                            취소
+                        </button>
+<button class="flex-[2] py-4 px-6 rounded-lg font-bold text-white bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all" type="submit">
+                            등록하기
+                        </button>
+</div>
+</form>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 px-10">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3 opacity-60">
+<span class="material-symbols-outlined">school</span>
+<span class="font-bold">방과후 프로그램 센터</span>
+</div>
+<div class="text-slate-400 text-xs">
+                    © 2024 AfterSchool Program Registration. All rights reserved.
+                </div>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors text-sm" href="/index.html">이용약관</a>
+<a class="text-slate-500 hover:text-primary transition-colors text-sm font-bold" href="/index.html">개인정보처리방침</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

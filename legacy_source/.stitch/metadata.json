@@ -1,0 +1,56 @@
+{
+  "name": "projects/10554756525812170840",
+  "projectId": "10554756525812170840",
+  "title": "After-school Program Home Page",
+  "visibility": "PRIVATE",
+  "createTime": "2026-03-01T15:40:21.246707Z",
+  "updateTime": "2026-03-02T09:40:11.807101Z",
+  "projectType": "TEXT_TO_UI_PRO",
+  "origin": "STITCH",
+  "deviceType": "DESKTOP",
+  "designTheme": {
+    "colorMode": "LIGHT",
+    "font": "LEXEND",
+    "roundness": "ROUND_EIGHT",
+    "customColor": "#137fec",
+    "saturation": 2
+  },
+  "screens": {
+    "home": {
+      "id": "6d9190fad558478da41dc469f569f282",
+      "title": "After-school Program Home Page",
+      "width": 1280,
+      "height": 2431
+    },
+    "course-list": {
+      "id": "34b717b73331437bb0c50f20daadb0fa",
+      "title": "After-school Course Enrollment List",
+      "width": 1280,
+      "height": 1463
+    },
+    "my-page": {
+      "id": "576a1e5f7cb6430d8280fa559a6f499d",
+      "title": "학생용 마이페이지",
+      "width": 1280,
+      "height": 1178
+    },
+    "login": {
+      "id": "3cb2ed1bfa9e4e43b5480dd463a0706d",
+      "title": "로그인 페이지",
+      "width": 1280,
+      "height": 1024
+    },
+    "signup": {
+      "id": "18c4549c208844c1be1cc998ad2d307b",
+      "title": "회원가입 페이지",
+      "width": 1280,
+      "height": 1024
+    },
+    "inquiry": {
+      "id": "7b06ffc568a04fd9b73ea42dbab68972",
+      "title": "1:1 문의 작성 페이지",
+      "width": 1280,
+      "height": 1334
+    }
+  }
+}

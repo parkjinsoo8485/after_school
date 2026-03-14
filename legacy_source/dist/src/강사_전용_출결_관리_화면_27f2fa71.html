@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>강사 전용 출결 관리 시스템</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13daec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#102022",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans KR", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Lexend', 'Noto Sans KR', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <script src="/ui_interactive.js"></script>
+
+
+  <script type="module" crossorigin src="/assets/global-auth-BbaQ_MtY.js"></script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Header Section -->
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-3">
+                <div class="flex items-center gap-4 text-slate-900 dark:text-slate-100">
+                    <div class="flex items-center justify-center bg-primary rounded-lg p-1.5 text-white">
+                        <span class="material-symbols-outlined">school</span>
+                    </div>
+                    <h2 class="text-lg font-bold leading-tight tracking-tight">에듀케어 강사 전용</h2>
+                </div>
+                <div class="flex flex-1 justify-end gap-8">
+                    <div class="flex items-center gap-9">
+                        <a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors"
+                            href="/index.html">강좌 관리</a>
+                        <a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="/index.html">출결
+                            관리</a>
+                        <a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors"
+                            href="/index.html">성적 관리</a>
+                        <a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors"
+                            href="/index.html">상담 기록</a>
+                    </div>
+                    <div class="flex gap-2">
+                        <button
+                            class="flex items-center justify-center rounded-lg h-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 w-10 hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined">notifications</span>
+                        </button>
+                        <button
+                            class="flex items-center justify-center rounded-lg h-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 w-10 hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined">account_circle</span>
+                        </button>
+                    </div>
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200"
+                        data-alt="Teacher profile picture"
+                        style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuAq05xChDcTyKb-fiGRLAN86VgsB85t3v9PN6zXAjJid6XR7Dg2CpfxNfapOjmBR6uqHkfrohCOFJ4CmQUjUJmsrlhJS2xcKr4mchPXlxD1_hwuWapHq12mrxbGrakvAF4fHz9AE8gZq3j46zz-rPipaB0tqDtcddPDo6NB4XEHTSaUSu6ruHZetRzr5OfHGGqpG0gPULJem3m6bejYUQXmFfmVi53D0dLCk167vCM14CIvGsyxiPrGubLaq-SJjcI1GKWx9bkNG8Gh&quot;);">
+                    </div>
+                </div>
+            </header>
+            <main class="px-10 lg:px-40 py-8 flex flex-col gap-6">
+                <!-- Title and Status Summary -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                    <div class="flex flex-col gap-2">
+                        <p class="text-slate-900 dark:text-slate-100 text-3xl font-black leading-tight tracking-tight">
+                            강좌 출결 관리</p>
+                        <p class="text-slate-500 dark:text-slate-400 text-base font-normal">오늘의 수업 출석을 확인하고 기록하세요. 실시간으로
+                            학부모님께 알림 전송이 가능합니다.</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button
+                            class="flex items-center justify-center rounded-lg h-11 px-5 bg-primary/10 text-primary border border-primary/20 text-sm font-bold hover:bg-primary/20 transition-all">
+                            <span class="material-symbols-outlined mr-2 text-xl">history</span>
+                            이전 출결 불러오기
+                        </button>
+                        <button
+                            class="flex items-center justify-center rounded-lg h-11 px-5 bg-primary text-white text-sm font-bold shadow-md shadow-primary/20 hover:brightness-105 transition-all">
+                            <span class="material-symbols-outlined mr-2 text-xl">check_circle</span>
+                            전체 출석 처리
+                        </button>
+                    </div>
+                </div>
+                <!-- Course Info Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div
+                        class="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined">menu_book</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">로봇 과학 A반</h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">
+                                강좌명</p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined">person</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">김민수 강사</h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">
+                                담당 강사</p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined">group</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight">수강생 20명</h2>
+                            <p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">
+                                현재 인원</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Filters -->
+                <div
+                    class="flex flex-col md:flex-row gap-4 bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <div class="flex flex-col gap-2 flex-1">
+                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300">강좌 선택</label>
+                        <div class="relative">
+                            <select
+                                class="w-full h-12 pl-4 pr-10 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none">
+                                <option>로봇 과학 A반 (월/수 14:00)</option>
+                                <option>코딩 기초 B반 (화/목 15:30)</option>
+                                <option>드론 항공 C반 (금 16:00)</option>
+                            </select>
+                            <span
+                                class="material-symbols-outlined absolute right-3 top-3 text-slate-400 pointer-events-none">expand_more</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 flex-1">
+                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300">날짜 선택</label>
+                        <div class="relative">
+                            <input
+                                class="w-full h-12 pl-4 pr-4 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                                type="date" value="2026-03-04">
+                        </div>
+                    </div>
+                </div>
+                <!-- Attendance Table -->
+                <div
+                    class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr
+                                class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
+                                <th class="px-6 py-4 text-sm font-bold text-slate-600 dark:text-slate-400 w-16">번호</th>
+                                <th class="px-6 py-4 text-sm font-bold text-slate-600 dark:text-slate-400 w-32">학생명</th>
+                                <th class="px-6 py-4 text-sm font-bold text-slate-600 dark:text-slate-400 w-48">학교/학년
+                                </th>
+                                <th class="px-6 py-4 text-sm font-bold text-slate-600 dark:text-slate-400 text-center">
+                                    출결 체크</th>
+                                <th class="px-6 py-4 text-sm font-bold text-slate-600 dark:text-slate-400">특이사항</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                            <!-- Student Row 1 -->
+                            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="px-6 py-4 text-sm text-slate-500">1</td>
+                                <td class="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">강은우</td>
+                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">서원초등학교 / 4학년</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-4">
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input checked=""
+                                                class="w-4 h-4 text-primary focus:ring-primary border-slate-300"
+                                                name="attendance-1" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-primary transition-colors">출석</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-red-500 focus:ring-red-500 border-slate-300"
+                                                name="attendance-1" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-red-500 transition-colors">결석</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-amber-500 focus:ring-amber-500 border-slate-300"
+                                                name="attendance-1" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-amber-500 transition-colors">지각</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-blue-500 focus:ring-blue-500 border-slate-300"
+                                                name="attendance-1" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-blue-500 transition-colors">조퇴</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-sm bg-transparent border-0 border-b border-transparent hover:border-slate-300 focus:border-primary focus:ring-0 p-1"
+                                        placeholder="특이사항 입력" type="text">
+                                </td>
+                            </tr>
+                            <!-- Student Row 2 -->
+                            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="px-6 py-4 text-sm text-slate-500">2</td>
+                                <td class="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">김지우</td>
+                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">하늘초등학교 / 5학년</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-4">
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input checked=""
+                                                class="w-4 h-4 text-primary focus:ring-primary border-slate-300"
+                                                name="attendance-2" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-primary transition-colors">출석</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-red-500 focus:ring-red-500 border-slate-300"
+                                                name="attendance-2" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-red-500 transition-colors">결석</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-amber-500 focus:ring-amber-500 border-slate-300"
+                                                name="attendance-2" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-amber-500 transition-colors">지각</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-blue-500 focus:ring-blue-500 border-slate-300"
+                                                name="attendance-2" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-blue-500 transition-colors">조퇴</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-sm bg-transparent border-0 border-b border-transparent hover:border-slate-300 focus:border-primary focus:ring-0 p-1"
+                                        placeholder="특이사항 입력" type="text">
+                                </td>
+                            </tr>
+                            <!-- Student Row 3 -->
+                            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="px-6 py-4 text-sm text-slate-500">3</td>
+                                <td class="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">박도윤</td>
+                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">서원초등학교 / 4학년</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-4">
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-primary focus:ring-primary border-slate-300"
+                                                name="attendance-3" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-primary transition-colors">출석</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-red-500 focus:ring-red-500 border-slate-300"
+                                                name="attendance-3" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-red-500 transition-colors">결석</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input checked=""
+                                                class="w-4 h-4 text-amber-500 focus:ring-amber-500 border-slate-300"
+                                                name="attendance-3" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-amber-500 transition-colors">지각</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-blue-500 focus:ring-blue-500 border-slate-300"
+                                                name="attendance-3" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-blue-500 transition-colors">조퇴</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-sm bg-transparent border-0 border-b border-primary/30 focus:border-primary focus:ring-0 p-1"
+                                        type="text" value="버스 지연으로 5분 지각">
+                                </td>
+                            </tr>
+                            <!-- Student Row 4 -->
+                            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="px-6 py-4 text-sm text-slate-500">4</td>
+                                <td class="px-6 py-4 font-bold text-slate-900 dark:text-slate-100">이서윤</td>
+                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">중앙초등학교 / 3학년</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-4">
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input checked=""
+                                                class="w-4 h-4 text-primary focus:ring-primary border-slate-300"
+                                                name="attendance-4" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-primary transition-colors">출석</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-red-500 focus:ring-red-500 border-slate-300"
+                                                name="attendance-4" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-red-500 transition-colors">결석</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-amber-500 focus:ring-amber-500 border-slate-300"
+                                                name="attendance-4" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-amber-500 transition-colors">지각</span>
+                                        </label>
+                                        <label class="flex items-center gap-1.5 cursor-pointer group">
+                                            <input class="w-4 h-4 text-blue-500 focus:ring-blue-500 border-slate-300"
+                                                name="attendance-4" type="radio">
+                                            <span
+                                                class="text-xs font-medium group-hover:text-blue-500 transition-colors">조퇴</span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <input
+                                        class="w-full text-sm bg-transparent border-0 border-b border-transparent hover:border-slate-300 focus:border-primary focus:ring-0 p-1"
+                                        placeholder="특이사항 입력" type="text">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800/50 flex justify-center">
+                        <nav class="flex gap-2">
+                            <button
+                                class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 bg-white hover:bg-slate-50 transition-colors">1</button>
+                            <button
+                                class="w-8 h-8 flex items-center justify-center rounded border border-transparent hover:bg-slate-100 transition-colors">2</button>
+                            <button
+                                class="w-8 h-8 flex items-center justify-center rounded border border-transparent hover:bg-slate-100 transition-colors">3</button>
+                            <span class="px-2 self-center">...</span>
+                            <button
+                                class="w-8 h-8 flex items-center justify-center rounded border border-transparent hover:bg-slate-100 transition-colors">5</button>
+                        </nav>
+                    </div>
+                </div>
+                <!-- Footer Actions -->
+                <div
+                    class="flex flex-col md:flex-row items-center justify-between gap-6 bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-md">
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center h-6">
+                            <input checked="" class="h-5 w-5 rounded border-slate-300 text-primary focus:ring-primary"
+                                id="notify-parents" type="checkbox">
+                        </div>
+                        <div class="ml-1 text-sm">
+                            <label class="font-bold text-slate-800 dark:text-slate-200" for="notify-parents">학부모님께 실시간
+                                출결 알림 전송</label>
+                            <p class="text-slate-500 dark:text-slate-400">저장 시 알림톡 또는 SMS로 즉시 발송됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 w-full md:w-auto">
+                        <button
+                            class="flex-1 md:flex-none flex items-center justify-center rounded-lg h-14 px-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-200 transition-all">
+                            취소하기
+                        </button>
+                        <button
+                            class="flex-1 md:flex-none flex items-center justify-center rounded-lg h-14 px-12 bg-primary text-white font-bold text-lg shadow-lg shadow-primary/30 hover:brightness-105 active:scale-95 transition-all">
+                            저장하기
+                        </button>
+                    </div>
+                </div>
+            </main>
+            <!-- Bottom Note -->
+            <footer class="px-40 py-10 text-center text-slate-400 dark:text-slate-600 text-xs">
+                <p>© 2023 에듀케어 방과후 관리 시스템. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

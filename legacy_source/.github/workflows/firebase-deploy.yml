@@ -1,0 +1,36 @@
+name: Firebase Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_id:
+        description: Firebase project id
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy Firestore + Hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          npx firebase-tools deploy \
+            --project "${{ github.event.inputs.project_id }}" \
+            --only firestore:rules,firestore:indexes,hosting \
+            --token "$FIREBASE_TOKEN"

@@ -1,0 +1,32 @@
+- generic [ref=e84]:
+  - complementary [ref=e85]:
+    - heading "After School" [level=2] [ref=e86]
+    - navigation [ref=e87]:
+      - link "Dashboard" [ref=e88] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Data" [ref=e89] [cursor=pointer]:
+        - /url: /data
+      - link "Profile" [ref=e90] [cursor=pointer]:
+        - /url: /profile
+      - link "Admin" [ref=e91] [cursor=pointer]:
+        - /url: /admin
+  - main [ref=e92]:
+    - generic [ref=e93]:
+      - generic [ref=e94]:
+        - strong [ref=e95]: Admin User
+        - text: admin
+      - button "Logout" [ref=e96] [cursor=pointer]
+    - generic [ref=e97]:
+      - heading "Admin" [level=1] [ref=e98]
+      - paragraph [ref=e99]: ����� ��� �� � ����
+      - table [ref=e101]:
+        - rowgroup [ref=e102]:
+          - row "UID Name Role" [ref=e103]:
+            - columnheader "UID" [ref=e104]
+            - columnheader "Name" [ref=e105]
+            - columnheader "Role" [ref=e106]
+        - rowgroup [ref=e107]:
+          - row "qpNUt7PMu3OMyFiKRL4iK7KMPun2 Admin User admin" [ref=e108]:
+            - cell "qpNUt7PMu3OMyFiKRL4iK7KMPun2" [ref=e109]
+            - cell "Admin User" [ref=e110]
+            - cell "admin" [ref=e111]

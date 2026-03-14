@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans KR", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>1:1 문의 작성 - 방과후 프로그램</title>
+<script src="/ui_interactive.js"></script>
+  <script type="module" src="/src/lib/firebase.js"></script>
+
+  <script type="module" src="/src/lib/global-auth.js"></script>
+
+  <script type="module" src="/src/lib/search.js"></script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header
+                class="flex items-center justify-between bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 md:px-20 py-4 sticky top-0 z-50 border-b border-slate-50 dark:border-slate-800">
+                <div class="flex items-center gap-12">
+                    <div class="flex items-center gap-2 text-primary cursor-pointer"
+                        onclick="location.href='/index.html'">
+                        <span class="material-symbols-outlined text-2xl font-bold">school</span>
+                        <h2 class="text-slate-900 dark:text-white text-base font-bold tracking-tight">방과후학교 포털</h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/index.html">홈</a>
+                        <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/src/courses.html">강좌 목록</a>
+                        <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/src/notices.html">공지사항</a>
+                        <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="/src/instructor-dashboard.html">강사 소개</a>
+                    </nav>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="hidden lg:flex items-center bg-slate-100 dark:bg-slate-800 rounded-full px-4 py-1.5 w-64">
+                        <span class="material-symbols-outlined text-slate-400 text-xl">search</span>
+                        <input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-slate-400" placeholder="강좌 검색..." type="text">
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span id="auth-user-info" class="text-slate-600 dark:text-slate-300 text-sm font-semibold" style="display:none"></span>
+                        <a id="auth-login-btn" href="/src/login.html" class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors">로그인</a>
+                        <a id="auth-logout-btn" href="#" class="text-slate-600 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" style="display:none">로그아웃</a>
+                        <a id="auth-signup-btn" href="/src/signup.html" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all">회원가입</a>
+                        <a id="auth-mypage-btn" href="/src/mypage.html" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-all" style="display:none">마이페이지</a>
+                    </div>
+                </div>
+            </header>
+<!-- Main Content Area -->
+<main class="flex-1 flex justify-center py-10 px-4">
+<div class="max-w-[800px] w-full bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 md:p-12">
+<!-- Breadcrumb & Header -->
+<div class="mb-10 text-center">
+<div class="flex items-center justify-center gap-2 text-slate-500 text-sm mb-4">
+<a class="hover:text-primary" href="/index.html">홈</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">1:1 문의하기</span>
+</div>
+<h1 class="text-3xl font-black text-slate-900 dark:text-white mb-3">1:1 문의 작성</h1>
+<p class="text-slate-500 dark:text-slate-400">궁금하신 점을 남겨주시면 담당자가 확인 후 답변해 드리겠습니다.</p>
+</div>
+<!-- Form -->
+<form class="space-y-6">
+<!-- Category Selection -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            카테고리 <span class="text-red-500">*</span>
+</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+<option disabled="" selected="" value="">문의 유형을 선택해주세요</option>
+<option value="registration">수강신청</option>
+<option value="payment">결제</option>
+<option value="attendance">출결</option>
+<option value="error">시스템 오류</option>
+<option value="etc">기타</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Title -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            제목 <span class="text-red-500">*</span>
+</label>
+<input class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="제목을 입력해주세요" type="text">
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            문의 내용 <span class="text-red-500">*</span>
+</label>
+<textarea class="w-full rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none" placeholder="상세한 문의 내용을 입력해주세요. 구체적으로 작성해 주시면 더욱 정확한 답변이 가능합니다." rows="8"></textarea>
+</div>
+<!-- File Attachment -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-slate-700 dark:text-slate-300">파일 첨부</label>
+<div class="flex items-center justify-center w-full">
+<label class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-lg cursor-pointer bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+<div class="flex flex-col items-center justify-center pt-5 pb-6">
+<span class="material-symbols-outlined text-slate-400 mb-2">cloud_upload</span>
+<p class="text-sm text-slate-500 dark:text-slate-400"><span class="font-semibold text-primary">클릭하여 파일 업로드</span> 또는 드래그 앤 드롭</p>
+<p class="text-xs text-slate-400 mt-1">PNG, JPG, PDF (최대 10MB)</p>
+</div>
+<input class="hidden" type="file">
+</label>
+</div>
+</div>
+<!-- Privacy Policy Agreement -->
+<div class="bg-slate-50 dark:bg-slate-800/40 p-4 rounded-lg flex items-start gap-3">
+<div class="flex items-center h-5">
+<input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary" id="privacy" type="checkbox">
+</div>
+<div class="text-sm">
+<label class="font-medium text-slate-700 dark:text-slate-300" for="privacy">개인정보 수집 및 이용 동의 <span class="text-red-500">(필수)</span></label>
+<p class="text-slate-500 text-xs mt-1">문의 응대 및 기록 관리를 위해 성명, 연락처 등 기재된 개인정보를 수집합니다. 수집된 정보는 목적 달성 후 지체 없이 파기됩니다.</p>
+</div>
+</div>
+<!-- Buttons -->
+<div class="flex gap-4 pt-4">
+<button class="flex-1 py-4 px-6 rounded-lg font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" type="button">
+                            취소
+                        </button>
+<button class="flex-[2] py-4 px-6 rounded-lg font-bold text-white bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all" type="submit">
+                            등록하기
+                        </button>
+</div>
+</form>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 py-16 px-6 md:px-20">
+                <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+                    <div class="flex flex-col gap-6">
+                        <div class="flex items-center gap-2 text-primary">
+                            <span class="material-symbols-outlined">school</span>
+                            <span class="font-bold text-lg text-slate-900 dark:text-white tracking-tight">방과후학교 포털</span>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">오늘의 배움으로 내일의 리더를 키웁니다.<br>2010년부터 학생들의 미래를 지원하고 있습니다.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-6">주요 서비스</h4>
+                        <ul class="flex flex-col gap-4 text-sm text-slate-500 dark:text-slate-400">
+                            <li><a class="hover:text-primary transition-colors" href="/src/courses.html">강좌 신청</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="/index.html">기관 소개</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="/src/notices.html">공지사항</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="/src/inquiry-form.html">고객 문의</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 dark:text-white text-sm mb-6">고객 지원</h4>
+                        <ul class="flex flex-col gap-4 text-sm text-slate-500 dark:text-slate-400">
+                            <li><a class="hover:text-primary transition-colors" href="/index.html">자주 묻는 질문</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="/terms.html">이용 약관</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="/privacy.html">개인정보 처리방침</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="max-w-[1200px] mx-auto mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-slate-400 text-xs">© 2024 방과후학교 포털 프로그램. All rights reserved.</p>
+                    <div class="flex gap-6 text-slate-400">
+                        <a class="hover:text-primary" href="/index.html"><span class="material-symbols-outlined text-xl">language</span></a>
+                        <a class="hover:text-primary" href="/index.html"><span class="material-symbols-outlined text-xl">alternate_email</span></a>
+                    </div>
+                </div>
+            </footer>
+</div>
+</body></html>

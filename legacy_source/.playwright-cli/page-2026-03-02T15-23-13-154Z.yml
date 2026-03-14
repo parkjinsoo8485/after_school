@@ -1,0 +1,33 @@
+- generic [ref=e27]:
+  - complementary [ref=e28]:
+    - heading "After School" [level=2] [ref=e29]
+    - navigation [ref=e30]:
+      - link "Dashboard" [ref=e31] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Data" [ref=e32] [cursor=pointer]:
+        - /url: /data
+      - link "Profile" [ref=e33] [cursor=pointer]:
+        - /url: /profile
+      - link "Admin" [ref=e34] [cursor=pointer]:
+        - /url: /admin
+  - main [ref=e35]:
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - strong [ref=e38]: Admin User
+        - text: admin
+      - button "Logout" [ref=e39] [cursor=pointer]
+    - generic [ref=e73]:
+      - heading "User Profile" [level=1] [ref=e74]
+      - generic [ref=e75]:
+        - paragraph [ref=e76]:
+          - strong [ref=e77]: "UID:"
+          - text: qpNUt7PMu3OMyFiKRL4iK7KMPun2
+        - paragraph [ref=e78]:
+          - strong [ref=e79]: "Email:"
+          - text: admin@afterschool.local
+        - paragraph [ref=e80]:
+          - strong [ref=e81]: "Display Name:"
+          - text: Admin User
+        - paragraph [ref=e82]:
+          - strong [ref=e83]: "Role:"
+          - text: admin

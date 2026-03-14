@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>수강료 환불 관리 시스템</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec6d",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102218",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-10 py-3 bg-background-light dark:bg-background-dark">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">방과후학교 관리 시스템</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 flex border-none bg-primary/10 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-0 border-none bg-primary/10 focus:border-none h-full placeholder:text-slate-400 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal" placeholder="학생명 또는 강좌명 검색" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">수강관리</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">강좌관리</a>
+<a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary pb-1" href="#">환불관리</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">통계</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-slate-900 dark:text-slate-100 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary/10 text-slate-900 dark:text-slate-100 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 bg-primary/20 border border-primary/30" data-alt="User profile avatar of a school administrator" style='background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDKVIJOSSxYu9qFmRW17csKGtqE23RjfabjwhDjaoev84DZOurOf-rjw6q3AzYtZKMwBIjegaCHjrxQpv0fAA3hw_VCe-3pkRnZdJWcYtvAy74yrnPONgraxNxNA__onaB5TGE5AXUN5WLUIoz01_doqXoPBSJbLVTyNLWd8DIAExWJMx7Tlo2VpvqIAoZZmlpaKd5yyMQY0EC1kEoq7hRJ9LYtp2ayU_xjxGIWJsYZ8VTUMhLaNK9elrJDs6aiEVwmT430AhSPMBi_&quot;);'></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col px-10 py-8 gap-8">
+<div class="flex flex-wrap justify-between items-end gap-3">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-[-0.033em]">수강료 환불 관리</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal">학생들의 환불 요청 내역을 검토하고 정책에 따라 환불 처리를 관리합니다.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 px-4 bg-primary/10 text-primary border border-primary/20 text-sm font-bold hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined mr-2 text-lg">download</span>
+                            엑셀 내보내기
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-8 items-start">
+<div class="xl:col-span-3 flex flex-col gap-6">
+<div class="flex gap-3 overflow-x-auto pb-2">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-background-dark px-6 font-bold text-sm">
+                                전체 내역
+                            </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 border border-primary/20 text-slate-900 dark:text-slate-100 px-4 text-sm font-medium hover:bg-primary/20">
+                                승인대기 <span class="bg-primary/20 px-2 py-0.5 rounded-full text-xs">8</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 border border-primary/20 text-slate-900 dark:text-slate-100 px-4 text-sm font-medium hover:bg-primary/20">
+                                환불완료
+                            </button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 border border-primary/20 text-slate-900 dark:text-slate-100 px-4 text-sm font-medium hover:bg-primary/20">
+                                반려
+                            </button>
+</div>
+<div class="overflow-hidden rounded-xl border border-primary/20 bg-background-light dark:bg-background-dark shadow-xl shadow-primary/5">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary/5 dark:bg-primary/10 border-b border-primary/20">
+<th class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">학생명</th>
+<th class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">강좌명</th>
+<th class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">환불 사유</th>
+<th class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">신청일</th>
+<th class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">환불 예정 금액</th>
+<th class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">상태</th>
+<th class="px-6 py-4 text-sm font-bold text-slate-900 dark:text-slate-100 text-center">관리</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/10">
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 text-sm font-medium">김철수 <span class="text-slate-400 text-xs ml-1">(1학년 2반)</span></td>
+<td class="px-6 py-4 text-sm">창의로봇교실 A</td>
+<td class="px-6 py-4 text-sm text-slate-500">개인 사정 (이사)</td>
+<td class="px-6 py-4 text-sm text-slate-500">2023-11-05</td>
+<td class="px-6 py-4 text-sm font-bold text-primary">₩45,000</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-500">
+                                                승인대기
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex justify-center gap-2">
+<button class="bg-primary text-background-dark text-xs font-bold px-3 py-1.5 rounded hover:opacity-90">승인</button>
+<button class="bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-slate-100 text-xs font-bold px-3 py-1.5 rounded hover:bg-red-500/20 hover:text-red-500 transition-all">반려</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 text-sm font-medium">이영희 <span class="text-slate-400 text-xs ml-1">(3학년 1반)</span></td>
+<td class="px-6 py-4 text-sm">기초 코딩 입문</td>
+<td class="px-6 py-4 text-sm text-slate-500">시간표 중복</td>
+<td class="px-6 py-4 text-sm text-slate-500">2023-11-04</td>
+<td class="px-6 py-4 text-sm font-bold text-primary">₩30,000</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/20 text-primary">
+                                                환불완료
+                                            </span>
+</td>
+<td class="px-6 py-4 text-center">
+<button class="text-slate-400 hover:text-slate-200">
+<span class="material-symbols-outlined text-xl">info</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 text-sm font-medium">박지민 <span class="text-slate-400 text-xs ml-1">(2학년 5반)</span></td>
+<td class="px-6 py-4 text-sm">방과후 축구교실</td>
+<td class="px-6 py-4 text-sm text-slate-500">질병으로 인한 중단</td>
+<td class="px-6 py-4 text-sm text-slate-500">2023-11-03</td>
+<td class="px-6 py-4 text-sm font-bold text-primary">₩22,500</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-500">
+                                                승인대기
+                                            </span>
+</td>
+<td class="px-6 py-4">
+<div class="flex justify-center gap-2">
+<button class="bg-primary text-background-dark text-xs font-bold px-3 py-1.5 rounded hover:opacity-90">승인</button>
+<button class="bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-slate-100 text-xs font-bold px-3 py-1.5 rounded hover:bg-red-500/20 hover:text-red-500 transition-all">반려</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4 text-sm font-medium">최우식 <span class="text-slate-400 text-xs ml-1">(4학년 4반)</span></td>
+<td class="px-6 py-4 text-sm">창의 미술교실</td>
+<td class="px-6 py-4 text-sm text-slate-500">단순 변심</td>
+<td class="px-6 py-4 text-sm text-slate-500">2023-11-02</td>
+<td class="px-6 py-4 text-sm font-bold text-primary">₩0</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-500/20 text-slate-400">
+                                                반려
+                                            </span>
+</td>
+<td class="px-6 py-4 text-center text-xs text-slate-500">
+                                            정책 미달성 (반려됨)
+                                        </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<aside class="flex flex-col gap-6">
+<div class="rounded-xl border border-primary/20 bg-primary/5 dark:bg-primary/10 p-6 flex flex-col gap-4">
+<h3 class="flex items-center gap-2 text-lg font-bold text-primary">
+<span class="material-symbols-outlined">calculate</span>
+                                환불 계산 기준
+                            </h3>
+<div class="flex flex-col gap-3">
+<div class="p-3 rounded-lg bg-background-light dark:bg-background-dark border border-primary/10">
+<p class="text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">수업 개시 전</p>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">이미 납부한 수강료 전액</p>
+</div>
+<div class="p-3 rounded-lg bg-background-light dark:bg-background-dark border border-primary/10">
+<p class="text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">총 수업시간 1/3 경과 전</p>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">수강료의 2/3 해당액 환불</p>
+</div>
+<div class="p-3 rounded-lg bg-background-light dark:bg-background-dark border border-primary/10">
+<p class="text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">총 수업시간 1/2 경과 전</p>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">수강료의 1/2 해당액 환불</p>
+</div>
+<div class="p-3 rounded-lg bg-background-light dark:bg-background-dark border border-primary/10 opacity-60">
+<p class="text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">총 수업시간 1/2 경과 후</p>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">반환하지 아니함</p>
+</div>
+</div>
+<p class="text-[11px] text-slate-500 italic">
+                                * 학교 수업료 및 입학금에 관한 규칙 제6조(수업료등의 반환) 준수
+                            </p>
+</div>
+<div class="rounded-xl border border-primary/20 bg-background-light dark:bg-background-dark p-6 flex flex-col gap-4 shadow-lg">
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">빠른 통계</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-primary/10 rounded-lg p-3">
+<p class="text-[10px] text-slate-500 font-bold">이번 달 환불 요청</p>
+<p class="text-lg font-black text-primary">24건</p>
+</div>
+<div class="bg-primary/10 rounded-lg p-3">
+<p class="text-[10px] text-slate-500 font-bold">환불 집행 금액</p>
+<p class="text-lg font-black text-primary">₩84.2만</p>
+</div>
+</div>
+</div>
+<div class="rounded-xl border border-red-500/20 bg-red-500/5 p-6 flex flex-col gap-3">
+<div class="flex items-center gap-2 text-red-500 font-bold text-sm">
+<span class="material-symbols-outlined text-lg">priority_high</span>
+                                긴급 확인 필요
+                            </div>
+<p class="text-xs text-slate-600 dark:text-slate-400">
+                                환불 신청 후 3일 이상 경과된 미처리 건이 <span class="font-bold text-red-400">2건</span> 있습니다.
+                            </p>
+</div>
+</aside>
+</div>
+</main>
+<footer class="mt-auto px-10 py-6 border-t border-primary/10 bg-background-light dark:bg-background-dark/50">
+<div class="flex justify-between items-center opacity-60">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<p class="text-xs font-medium">서울중앙초등학교 행정실 환불 관리 시스템</p>
+</div>
+<div class="flex gap-4">
+<a class="text-xs hover:text-primary transition-colors" href="#">이용약관</a>
+<a class="text-xs hover:text-primary transition-colors font-bold" href="#">개인정보처리방침</a>
+<a class="text-xs hover:text-primary transition-colors" href="#">시스템 매뉴얼</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

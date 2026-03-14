@@ -1,0 +1,312 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>공지사항 | 방과후 프로그램 등록</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "Noto Sans KR", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Lexend', 'Noto Sans KR', sans-serif;
+        }
+    </style>
+<script src="/ui_interactive.js"></script>
+
+  <script type="module" crossorigin src="/assets/global-auth-BbaQ_MtY.js"></script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary cursor-pointer" onclick="location.href='/index.html'">
+<span class="material-symbols-outlined text-3xl font-bold">school</span>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">방과후학교</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="/index.html">홈</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="/src/after_school_course_enrollment_list_34b717b7.html">수강신청</a>
+<a class="text-sm font-bold text-primary transition-colors border-b-2 border-primary py-5" href="/src/공지사항_목록_페이지_02bece20.html">공지사항</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="/src/학생용_마이페이지_576a1e5f.html">마이페이지</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<a id="auth-login-btn" href="/src/login.html" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all shadow-sm">로그인</a>
+<a id="auth-logout-btn" href="#" class="bg-slate-200 text-slate-700 px-5 py-2 rounded-lg text-sm font-bold hover:bg-slate-300 transition-all" style="display:none">로그아웃</a>
+<a id="auth-mypage-btn" href="/src/학생용_마이페이지_576a1e5f.html" class="bg-primary text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all shadow-sm" style="display:none">마이페이지</a>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<!-- Page Title & Breadcrumb -->
+<div class="mb-8">
+<nav class="flex items-center gap-2 text-sm text-slate-500 mb-4">
+<a class="hover:text-primary" href="/index.html">홈</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 font-medium">공지사항</span>
+</nav>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-2">공지사항</h2>
+<p class="text-slate-500 dark:text-slate-400">방과후 프로그램의 새로운 소식과 주요 일정을 확인하세요.</p>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative w-full md:w-80">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl pl-12 pr-4 py-3 focus:ring-2 focus:ring-primary shadow-sm" placeholder="제목 또는 내용으로 검색" type="text">
+</div>
+</div>
+</div>
+</div>
+<!-- Category Tabs -->
+<div class="mb-8 border-b border-slate-200 dark:border-slate-800">
+<div class="flex gap-8 overflow-x-auto no-scrollbar">
+<button class="pb-4 text-sm font-bold text-primary border-b-2 border-primary whitespace-nowrap">전체</button>
+<button class="pb-4 text-sm font-medium text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 whitespace-nowrap">학사일정</button>
+<button class="pb-4 text-sm font-medium text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 whitespace-nowrap">수강안내</button>
+<button class="pb-4 text-sm font-medium text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 whitespace-nowrap">기타</button>
+</div>
+</div>
+<!-- Important Notices (Highlighted Section) -->
+<div class="space-y-3 mb-8">
+<div class="group bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-center gap-3 shrink-0">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded tracking-tight">필독</span>
+<span class="text-slate-400 text-xs font-medium">공지</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors flex items-center gap-2">
+                        2024년도 2분기 방과후 프로그램 수강신청 안내 및 유의사항
+                        <span class="bg-red-500 text-white text-[10px] flex items-center justify-center w-4 h-4 rounded-full font-bold">N</span>
+</h3>
+</div>
+<div class="flex items-center gap-6 text-xs text-slate-500 shrink-0">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024.05.20</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">visibility</span> 1,245</span>
+</div>
+</div>
+<div class="group bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-center gap-3 shrink-0">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded tracking-tight">필독</span>
+<span class="text-slate-400 text-xs font-medium">학사</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                        시스템 정기 점검 및 수강신청 서버 증설 안내 (05.25 예정)
+                    </h3>
+</div>
+<div class="flex items-center gap-6 text-xs text-slate-500 shrink-0">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024.05.18</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">visibility</span> 892</span>
+</div>
+</div>
+</div>
+<!-- Main Notice List Table -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-20 text-center">번호</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">제목</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-32 text-center">작성일</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider w-24 text-center">조회수</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="showNoticeDetail(this, 124, '창의 로봇 교실 재료비 납부 안내', '2024.05.21', '창의 로봇 교실 재료비 납부 안내입니다. 5월 31일까지 학교 행정실에 납부해 주시기 바랍니다. 재료비는 1인당 35,000원이며, 계좌이체 또는 현금 납부 가능합니다.')">
+<td class="px-6 py-4 text-sm text-slate-500 text-center font-medium">124</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-slate-900 dark:text-slate-200 font-medium group-hover:text-primary transition-colors">창의 로봇 교실 재료비 납부 안내</span>
+<span class="bg-red-500 text-white text-[10px] flex items-center justify-center w-4 h-4 rounded-full font-bold">N</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">2024.05.21</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">154</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="showNoticeDetail(this, 123, '여름방학 독서 캠프 참가자 모집 공고', '2024.05.20', '여름방학 독서 캠프 참가자를 모집합니다. 7월 22일~8월 2일(2주) 진행 예정이며, 초등 전 학년 대상입니다. 선착순 30명 모집이오니 서둘러 신청해 주세요.')">
+<td class="px-6 py-4 text-sm text-slate-500 text-center font-medium">123</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-slate-900 dark:text-slate-200 font-medium group-hover:text-primary transition-colors">여름방학 독서 캠프 참가자 모집 공고</span>
+<span class="bg-red-500 text-white text-[10px] flex items-center justify-center w-4 h-4 rounded-full font-bold">N</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">2024.05.20</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">312</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="showNoticeDetail(this, 122, '[수강안내] 원어민 영어 회화 교실 강의실 변경 안내', '2024.05.15', '원어민 영어 회화 교실의 강의실이 변경되었습니다. 기존 3층 301호 → 변경 2층 201호로 5월 20일(월)부터 적용됩니다.')">
+<td class="px-6 py-4 text-sm text-slate-500 text-center font-medium">122</td>
+<td class="px-6 py-4">
+<span class="text-slate-900 dark:text-slate-200 font-medium group-hover:text-primary transition-colors">[수강안내] 원어민 영어 회화 교실 강의실 변경 안내</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">2024.05.15</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">245</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="showNoticeDetail(this, 121, '5월 가정의 달 기념 학부모 초청 공개 수업 일정', '2024.05.10', '5월 가정의 달을 맞아 학부모 초청 공개 수업을 진행합니다. 일시: 5월 25일(토) 오전 10시~12시, 장소: 각 강의실, 참석 희망자는 5월 20일까지 담당 교사에게 연락 주시기 바랍니다.')">
+<td class="px-6 py-4 text-sm text-slate-500 text-center font-medium">121</td>
+<td class="px-6 py-4">
+<span class="text-slate-900 dark:text-slate-200 font-medium group-hover:text-primary transition-colors">5월 가정의 달 기념 학부모 초청 공개 수업 일정</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">2024.05.10</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">678</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="showNoticeDetail(this, 120, '방과후 오케스트라 신입 단원 오디션 결과 발표', '2024.05.08', '방과후 오케스트라 신입 단원 오디션 결과를 발표합니다. 합격자 명단은 게시판 및 개별 문자로 통지되었습니다. 첫 연습은 5월 13일(월) 오후 4시입니다.')">
+<td class="px-6 py-4 text-sm text-slate-500 text-center font-medium">120</td>
+<td class="px-6 py-4">
+<span class="text-slate-900 dark:text-slate-200 font-medium group-hover:text-primary transition-colors">방과후 오케스트라 신입 단원 오디션 결과 발표</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">2024.05.08</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">432</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="showNoticeDetail(this, 119, 'SW 코딩 경진대회 시상 내역 및 상장 수령 안내', '2024.05.05', 'SW 코딩 경진대회 시상 내역을 안내합니다. 대상: 김OO, 최우수상: 이OO·박OO. 상장은 5월 10일 수업 시간에 수여 예정입니다.')">
+<td class="px-6 py-4 text-sm text-slate-500 text-center font-medium">119</td>
+<td class="px-6 py-4">
+<span class="text-slate-900 dark:text-slate-200 font-medium group-hover:text-primary transition-colors">SW 코딩 경진대회 시상 내역 및 상장 수령 안내</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">2024.05.05</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">198</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="showNoticeDetail(this, 118, '봄학기 특기적성 프로그램 만족도 조사 실시', '2024.04.30', '봄학기 방과후 특기적성 프로그램에 대한 만족도 조사를 실시합니다. 조사 기간: 5월 7일~5월 14일, 설문지는 온라인 또는 가정통신문으로 배부됩니다.')">
+<td class="px-6 py-4 text-sm text-slate-500 text-center font-medium">118</td>
+<td class="px-6 py-4">
+<span class="text-slate-900 dark:text-slate-200 font-medium group-hover:text-primary transition-colors">봄학기 특기적성 프로그램 만족도 조사 실시</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">2024.04.30</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">567</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer group" onclick="showNoticeDetail(this, 117, '[기타] 분실물(스마트워치) 보관 센터 수령 안내', '2024.04.28', '분실물 스마트워치가 행정실에 보관되어 있습니다. 소유자는 신분 확인 후 행정실에서 수령해 주세요. 일주일 내 수령하지 않을 경우 처분할 예정입니다.')">
+<td class="px-6 py-4 text-sm text-slate-500 text-center font-medium">117</td>
+<td class="px-6 py-4">
+<span class="text-slate-900 dark:text-slate-200 font-medium group-hover:text-primary transition-colors">[기타] 분실물(스마트워치) 보관 센터 수령 안내</span>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">2024.04.28</td>
+<td class="px-6 py-4 text-sm text-slate-500 text-center">124</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-10 flex items-center justify-center gap-2">
+<button class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-400 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined">first_page</span>
+</button>
+<button class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-400 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<div class="flex items-center gap-1 mx-2">
+<button class="w-10 h-10 rounded-lg bg-primary text-white font-bold shadow-md shadow-primary/20">1</button>
+<button class="w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-all">2</button>
+<button class="w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-all">3</button>
+<button class="w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-all">4</button>
+<button class="w-10 h-10 rounded-lg text-slate-600 dark:text-slate-400 font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-all">5</button>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-400 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+<button class="flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-400 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined">last_page</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-2 text-primary mb-4 cursor-pointer" onclick="location.href='/index.html'">
+<span class="material-symbols-outlined text-2xl font-bold">school</span>
+<h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">방과후학교 통합시스템</h2>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm mb-4">
+                        학생들의 꿈과 끼를 키우는 다양한 방과후 교육 서비스를 제공합니다. 안전하고 즐거운 교육 환경을 위해 최선을 다하겠습니다.
+                    </p>
+<p class="text-xs text-slate-400">© 2024 AfterSchool Inc. All rights reserved.</p>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white mb-4">빠른 링크</h3>
+<ul class="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="/src/공지사항_목록_페이지_02bece20.html">공지사항</a></li>
+<li><a class="hover:text-primary transition-colors" href="/src/after_school_course_enrollment_list_34b717b7.html">수강신청 안내</a></li>
+<li><a class="hover:text-primary transition-colors" href="/index.html">자주 묻는 질문</a></li>
+<li><a class="hover:text-primary transition-colors" href="/index.html">일대일 문의</a></li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white mb-4">고객센터</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-1">전화: 1588-0000</p>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-1">이메일: help@afterschool.kr</p>
+<p class="text-xs text-slate-400 mt-4">평일 09:00 - 18:00 (주말/공휴일 휴무)</p>
+</div>
+</div>
+</div>
+</footer>
+<!-- 공지사항 상세보기 모달 -->
+<div id="notice-modal" class="fixed inset-0 z-[200] flex items-center justify-center p-4" style="display:none!important">
+  <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeNoticeModal()"></div>
+  <div class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+    <div class="bg-slate-50 dark:bg-slate-800 px-8 py-5 flex items-center justify-between border-b border-slate-200 dark:border-slate-700">
+      <div>
+        <p id="modal-number" class="text-xs text-slate-400 mb-1"></p>
+        <h2 id="modal-title" class="text-xl font-bold text-slate-900 dark:text-white"></h2>
+      </div>
+      <button onclick="closeNoticeModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors p-1">
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+    <div class="px-8 py-4 flex items-center gap-6 text-sm text-slate-500 border-b border-slate-100 dark:border-slate-800">
+      <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span><span id="modal-date"></span></span>
+      <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">person</span>관리자</span>
+    </div>
+    <div id="modal-content" class="px-8 py-8 text-slate-700 dark:text-slate-300 leading-relaxed min-h-[160px]"></div>
+    <div class="px-8 py-5 bg-slate-50 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 flex justify-end gap-3">
+      <button onclick="closeNoticeModal()" class="px-6 py-2.5 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-sm font-medium hover:bg-slate-100 transition-all">목록으로</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function showNoticeDetail(row, num, title, date, content) {
+  document.getElementById('modal-number').textContent = '공지 #' + num;
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-date').textContent = date;
+  document.getElementById('modal-content').textContent = content;
+  const modal = document.getElementById('notice-modal');
+  modal.style.display = 'flex';
+  modal.style.removeProperty('display'); // remove !important override
+  modal.style.setProperty('display', 'flex');
+  document.body.style.overflow = 'hidden';
+}
+function closeNoticeModal() {
+  document.getElementById('notice-modal').style.setProperty('display', 'none', 'important');
+  document.body.style.overflow = '';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('notice-modal');
+  modal.style.setProperty('display', 'none', 'important');
+});
+</script>
+</body></html>

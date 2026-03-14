@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4999e9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>대기 학생 자동 알림 설정</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">방과후 프로그램 관리자</h2>
+</div>
+<div class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">대시보드</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">강좌관리</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">학생관리</a>
+<a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary" href="#">대기명단</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">설정</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-500 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-lg" data-icon="search">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-slate-800 focus:ring-0 h-full placeholder:text-slate-500 px-4 rounded-r-lg text-base font-normal" placeholder="학생명 또는 강좌 검색"/>
+</div>
+</label>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4">
+<!-- Title Section -->
+<div class="flex flex-wrap justify-between items-end gap-3 pb-8">
+<div class="flex min-w-72 flex-col gap-2">
+<h1 class="text-slate-900 dark:text-slate-100 text-3xl font-black leading-tight tracking-tight">대기 학생 자동 알림 설정</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal">강좌 취소로 결원이 발생할 경우 대기 학생에게 자동으로 수강 신청 기회를 안내합니다.</p>
+</div>
+</div>
+<!-- Main Settings Grid -->
+<div class="grid grid-cols-1 gap-6">
+<!-- Toggle Controls Group -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800">
+<h2 class="text-lg font-bold">알림 기본 활성화</h2>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<div class="flex items-center justify-between p-6">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">자동 알림 기능 사용</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">결원 발생 시 시스템이 자동으로 다음 대기자에게 연락합니다.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between p-6">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">카카오톡 알림톡 발송</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">카카오톡 채널을 통해 공식 알림 메시지를 발송합니다.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center justify-between p-6">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">SMS 문자 발송</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">알림톡 발송 실패 시 또는 기본 수단으로 SMS를 발송합니다.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Notification Logic & Expiration -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-4">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+                                    알림 및 신청 규칙
+                                </h3>
+<div>
+<label class="block text-sm font-semibold mb-2">알림 발송 시점</label>
+<select class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-primary">
+<option>결원 발생 즉시 자동 발송</option>
+<option>매시간 정각 모아서 발송</option>
+<option>수동 확인 후 발송</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-semibold mb-2">대기 순번 우선순위</label>
+<div class="space-y-2">
+<label class="flex items-center gap-2">
+<input checked="" class="text-primary focus:ring-primary bg-slate-100 dark:bg-slate-800 border-slate-300" name="priority" type="radio"/>
+<span class="text-sm">선착순 (대기 번호 순)</span>
+</label>
+<label class="flex items-center gap-2">
+<input class="text-primary focus:ring-primary bg-slate-100 dark:bg-slate-800 border-slate-300" name="priority" type="radio"/>
+<span class="text-sm">저학년 우선 배정</span>
+</label>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-4">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">timer</span>
+                                    신청 유효 시간 설정
+                                </h3>
+<p class="text-sm text-slate-500">대기 학생에게 알림이 발송된 후, 다음 순번으로 기회가 넘어가기 전까지의 대기 시간입니다.</p>
+<div class="flex items-center gap-3">
+<input class="w-24 rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-center font-bold" type="number" value="24"/>
+<span class="font-medium text-slate-700 dark:text-slate-300">시간 이내 신청 필요</span>
+</div>
+<div class="p-3 bg-primary/10 rounded-lg border border-primary/20">
+<p class="text-xs text-primary leading-relaxed">
+                                        * 설정된 시간이 경과하면 해당 학생의 신청 링크는 만료되며, 자동으로 다음 대기자에게 알림이 발송됩니다.
+                                    </p>
+</div>
+</section>
+</div>
+<!-- Template Editor -->
+<section class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">chat</span>
+                                    메시지 템플릿 커스텀
+                                </h3>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-[10px] font-mono border border-slate-200 dark:border-slate-700">{학생명}</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-[10px] font-mono border border-slate-200 dark:border-slate-700">{강좌명}</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-[10px] font-mono border border-slate-200 dark:border-slate-700">{신청링크}</span>
+</div>
+</div>
+<div class="relative">
+<textarea class="w-full rounded-lg border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:border-primary focus:ring-primary p-4 text-sm font-display leading-relaxed" placeholder="안내 메시지 내용을 입력하세요..." rows="6">[방과후학교 알림]
+안녕하세요 {학생명} 학부모님, 신청하신 '{강좌명}' 수업에 결원이 발생하여 안내드립니다.
+
+현재 대기 순번으로 수강 신청이 가능합니다. 아래 링크를 통해 신청을 완료해 주세요.
+
+신청 링크: {신청링크}
+* 유효 시간 내에 미신청 시 기회가 자동으로 다음 대기자에게 넘어갑니다.</textarea>
+</div>
+<p class="mt-3 text-xs text-slate-500">치환자({ })를 활용하여 학생별로 맞춤형 정보를 자동 삽입할 수 있습니다.</p>
+</section>
+<!-- Final Actions -->
+<div class="flex items-center justify-between gap-4 pt-4">
+<button class="flex-1 max-w-[200px] flex items-center justify-center gap-2 rounded-xl h-12 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-300 transition-colors">
+<span class="material-symbols-outlined text-lg">visibility</span>
+                                미리보기 발송
+                            </button>
+<button class="flex-1 flex items-center justify-center gap-2 rounded-xl h-12 bg-primary text-white font-bold hover:bg-blue-600 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">save</span>
+                                설정 저장
+                            </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer-like padding -->
+<footer class="py-10 text-center text-slate-400 text-xs">
+                © 2024 방과후 프로그램 관리 시스템. All rights reserved.
+            </footer>
+</div>
+</div>
+</body></html>

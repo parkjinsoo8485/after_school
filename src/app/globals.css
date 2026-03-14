@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cream: #fdfbf7;
+    --terracotta: #cc6644;
+    --soft-orange: #f4a261;
+    --deep-orange: #e76f51;
+    --primary: #cc6644;
+    --secondary: #f4a261;
+    --background: var(--cream);
+    --foreground: #1e293b;
+  }
+
+  .dark {
+    --primary: #f4a261;
+    --secondary: #cc6644;
+    --background: #1a1614;
+    --foreground: #f8fafc;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Lexend', 'Noto Sans KR', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glassmorphism Classes */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass {
+  background: rgba(26, 22, 20, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}

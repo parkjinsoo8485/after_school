@@ -1,0 +1,40 @@
+- generic [ref=e27]:
+  - complementary [ref=e28]:
+    - heading "After School" [level=2] [ref=e29]
+    - navigation [ref=e30]:
+      - link "Dashboard" [ref=e31] [cursor=pointer]:
+        - /url: /dashboard
+      - link "Data" [ref=e32] [cursor=pointer]:
+        - /url: /data
+      - link "Profile" [ref=e33] [cursor=pointer]:
+        - /url: /profile
+      - link "Admin" [ref=e34] [cursor=pointer]:
+        - /url: /admin
+  - main [ref=e35]:
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - strong [ref=e38]: Admin User
+        - text: admin
+      - button "Logout" [ref=e39] [cursor=pointer]
+    - generic [ref=e52]:
+      - heading "CRUD Data" [level=1] [ref=e53]
+      - generic [ref=e54]:
+        - textbox "Title" [ref=e55]
+        - textbox "Description" [ref=e56]
+        - combobox [ref=e57]:
+          - option "active" [selected]
+          - option "archived"
+        - button "Create Item" [ref=e58] [cursor=pointer]
+      - table [ref=e60]:
+        - rowgroup [ref=e61]:
+          - row "Title Status Actions" [ref=e62]:
+            - columnheader "Title" [ref=e63]
+            - columnheader "Status" [ref=e64]
+            - columnheader "Actions" [ref=e65]
+        - rowgroup [ref=e66]:
+          - row "Playwright Item active Edit Delete" [ref=e67]:
+            - cell "Playwright Item" [ref=e68]
+            - cell "active" [ref=e69]
+            - cell "Edit Delete" [ref=e70]:
+              - button "Edit" [ref=e71]
+              - button "Delete" [ref=e72]

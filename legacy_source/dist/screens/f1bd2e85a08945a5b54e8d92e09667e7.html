@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>출결 엑셀 일괄 업로드 관리 페이지</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">출결 관리 시스템</h2>
+</div>
+<nav class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">대시보드</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary py-1" href="#">출결 현황</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">학생 관리</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">설정</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-lg" data-icon="MagnifyingGlass">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-slate-800 focus:ring-0 h-full placeholder:text-slate-500 px-4 rounded-r-lg pl-2 text-base font-normal" placeholder="학생 검색..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+<span class="material-symbols-outlined text-xl">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-10 px-4 md:px-20 lg:px-40">
+<div class="layout-content-container flex flex-col max-w-[1024px] flex-1 gap-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-white text-3xl font-black tracking-tight">출결 엑셀 일괄 업로드</h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg">엑셀 파일을 사용하여 대규모 출결 데이터를 한 번에 효율적으로 등록하세요.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex flex-col items-center p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<span class="material-symbols-outlined text-4xl text-primary mb-4">download_for_offline</span>
+<h3 class="font-bold text-slate-900 dark:text-white mb-2">1. 양식 다운로드</h3>
+<p class="text-sm text-slate-500 text-center">정확한 업로드를 위해 최신 템플릿을 다운로드하세요.</p>
+</div>
+<div class="flex flex-col items-center p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-slate-300 dark:bg-slate-700"></div>
+<span class="material-symbols-outlined text-4xl text-slate-400 mb-4">edit_note</span>
+<h3 class="font-bold text-slate-900 dark:text-white mb-2">2. 데이터 입력</h3>
+<p class="text-sm text-slate-500 text-center">정해진 형식에 맞춰 출결 정보를 빠짐없이 입력하세요.</p>
+</div>
+<div class="flex flex-col items-center p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-slate-300 dark:bg-slate-700"></div>
+<span class="material-symbols-outlined text-4xl text-slate-400 mb-4">upload_file</span>
+<h3 class="font-bold text-slate-900 dark:text-white mb-2">3. 파일 업로드</h3>
+<p class="text-sm text-slate-500 text-center">작성 완료된 파일을 시스템에 업로드하여 검증하세요.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-primary/10 p-3 rounded-full text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white">엑셀 양식 다운로드</h4>
+<p class="text-sm text-slate-500">학생 명단과 출결 코드가 포함된 최신 양식입니다.</p>
+</div>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-lg hover:bg-blue-700 transition-all shadow-md active:scale-95">
+<span class="material-symbols-outlined text-xl">download</span>
+<span>템플릿 다운로드</span>
+</button>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 p-12 flex flex-col items-center justify-center gap-4 text-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors cursor-pointer group">
+<div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-4xl">cloud_upload</span>
+</div>
+<div>
+<p class="text-xl font-bold text-slate-900 dark:text-white">여기로 파일을 드래그하여 업로드하세요</p>
+<p class="text-slate-500 mt-1">또는 컴퓨터에서 파일 찾기 (xlsx, xls 확장자만 가능)</p>
+</div>
+<button class="mt-2 px-6 py-2 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-semibold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+                            파일 선택하기
+                        </button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined">analytics</span>
+                                데이터 미리보기 및 검증
+                            </h3>
+<span class="text-sm font-medium text-slate-500">총 4건 중 오류 1건 발견</span>
+</div>
+<div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+<table class="w-full text-left border-collapse">
+<thead class="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-800">
+<tr>
+<th class="px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-300">상태</th>
+<th class="px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-300">학생명</th>
+<th class="px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-300">학번</th>
+<th class="px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-300">날짜</th>
+<th class="px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-300">출결구분</th>
+<th class="px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-300">메모</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">정상</span>
+</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">김철수</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">2023001</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">2023-10-27</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">출석</td>
+<td class="px-4 py-3 text-sm text-slate-500">-</td>
+</tr>
+<tr class="bg-red-50 dark:bg-red-900/10">
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">오류</span>
+</td>
+<td class="px-4 py-3 text-sm text-red-600 font-bold">이영희</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">2023002</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">2023-13-27</td>
+<td class="px-4 py-3 text-sm text-red-600 font-bold italic">유효하지 않은 날짜</td>
+<td class="px-4 py-3 text-sm text-slate-500">-</td>
+</tr>
+<tr>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">정상</span>
+</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">박민수</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">2023003</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">2023-10-27</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">지각</td>
+<td class="px-4 py-3 text-sm text-slate-500">교통체증</td>
+</tr>
+<tr>
+<td class="px-4 py-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">정상</span>
+</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">최유리</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">2023004</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">2023-10-27</td>
+<td class="px-4 py-3 text-sm text-slate-900 dark:text-slate-300">결석</td>
+<td class="px-4 py-3 text-sm text-slate-500">개인 사정</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center gap-2 text-red-600 dark:text-red-400 text-sm">
+<span class="material-symbols-outlined text-lg">error</span>
+<span>오류 데이터가 포함되어 있습니다. 파일을 수정 후 다시 업로드해 주세요.</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-3 pt-6 border-t border-slate-200 dark:border-slate-800">
+<button class="px-6 py-3 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            취소
+                        </button>
+<button class="px-8 py-3 bg-primary text-white font-bold rounded-lg hover:bg-blue-700 transition-all shadow-lg shadow-primary/20 opacity-50 cursor-not-allowed">
+                            일괄 등록 완료
+                        </button>
+</div>
+</div>
+</main>
+<footer class="mt-auto py-8 text-center border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+<p class="text-sm text-slate-500">© 2024 출결 관리 시스템 관리자 센터. All rights reserved.</p>
+</footer>
+</div>
+</div>
+</body></html>

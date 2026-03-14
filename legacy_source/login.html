@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After School Admin - Login</title>
+    <script>
+      // Keep login.html as a real frontend entry and force route to /login.
+      if (location.pathname.endsWith('/login.html')) {
+        history.replaceState(null, '', '/login');
+      }
+    </script>
+  <script src="/ui_interactive.js"></script></head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  
+
+</body></html>

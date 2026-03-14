@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+              "kakao": "#FEE500",
+              "naver": "#03C75A",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<title>방과후 프로그램 - 로그인</title>
+<script src="/ui_interactive.js"></script>
+
+
+  <script type="module" crossorigin src="/assets/global-auth-BbaQ_MtY.js"></script>
+  <script type="module" crossorigin src="/assets/login-handler-CUwXzXN1.js"></script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 lg:px-40">
+<div class="flex items-center gap-4">
+<div class="text-primary size-8">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">방과후 프로그램</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="/src/after_school_program_home_page_0990902d.html">프로그램 안내</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="/src/after_school_course_enrollment_list_34b717b7.html">수강신청</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="/src/공지사항_목록_페이지_02bece20.html">공지사항</a>
+</nav>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold" onclick="location.href='/src/회원가입_페이지_18c4549c.html'">
+                회원가입
+            </button>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-6">
+<div class="w-full max-w-[440px] bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 p-8 lg:p-10">
+<div class="text-center mb-8">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">로그인</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">서비스 이용을 위해 계정 정보를 입력해주세요.</p>
+</div>
+<form class="space-y-5">
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-medium">아이디</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">person</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="아이디를 입력하세요" type="text">
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-slate-700 dark:text-slate-300 text-sm font-medium">비밀번호</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">lock</span>
+<input class="w-full pl-10 pr-12 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="비밀번호를 입력하세요" type="password">
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between py-1">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="rounded text-primary focus:ring-primary border-slate-300 dark:border-slate-700 dark:bg-slate-800" type="checkbox">
+<span class="text-xs text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-200">아이디 저장</span>
+</label>
+<div class="flex gap-3 text-xs text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary underline underline-offset-4" href="/index.html">아이디 찾기</a>
+<span class="text-slate-300 dark:text-slate-700">|</span>
+<a class="hover:text-primary underline underline-offset-4" href="/index.html">비밀번호 찾기</a>
+</div>
+</div>
+<button class="w-full py-4 bg-primary text-white rounded-lg font-bold text-base hover:bg-primary/90 transition-colors shadow-md shadow-primary/20" type="submit" onclick="location.href='/src/로그인_페이지_3cb2ed1b.html'">
+                    로그인
+                </button>
+</form>
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200 dark:border-slate-800"></div>
+</div>
+<div class="relative flex justify-center text-xs uppercase">
+<span class="bg-white dark:bg-slate-900 px-4 text-slate-500 dark:text-slate-400">또는 SNS 계정으로 로그인</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-kakao text-slate-900 font-medium text-sm hover:opacity-90 transition-opacity">
+<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 3C6.477 3 2 6.48 2 10.79c0 2.76 1.83 5.17 4.6 6.51l-1.17 4.29c-.06.22.01.46.18.61a.51.51 0 00.32.11c.11 0 .22-.03.31-.09l4.98-3.29c.26.03.52.05.78.05 5.523 0 10-3.48 10-7.79S17.523 3 12 3z"></path>
+</svg>
+<span>카카오</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-naver text-white font-medium text-sm hover:opacity-90 transition-opacity">
+<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+<path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"></path>
+</svg>
+<span>네이버</span>
+</button>
+</div>
+<div class="mt-8 text-center border-t border-slate-100 dark:border-slate-800 pt-6">
+<p class="text-slate-600 dark:text-slate-400 text-sm">
+                    아직 회원이 아니신가요? 
+                    <a class="text-primary font-bold ml-2 hover:underline" href="/src/회원가입_페이지_18c4549c.html">회원가입 하기</a>
+</p>
+</div>
+</div>
+</main>
+<footer class="py-10 px-6 lg:px-40 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-slate-400 mb-2">
+<span class="material-symbols-outlined text-[20px]">school</span>
+<span class="font-bold text-sm tracking-tight">After-School Hub</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">© 2024 방과후 프로그램 교육 서비스. All rights reserved.</p>
+<div class="flex gap-4 text-xs text-slate-400">
+<a class="hover:text-primary" href="/index.html">이용약관</a>
+<a class="hover:text-primary font-bold" href="/index.html">개인정보처리방침</a>
+<a class="hover:text-primary" href="/index.html">고객센터</a>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">help_outline</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
