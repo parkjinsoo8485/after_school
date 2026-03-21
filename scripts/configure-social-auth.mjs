@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import process from 'node:process';
 import { GoogleAuth } from 'google-auth-library';
@@ -48,6 +49,63 @@ async function authorizedClient(localEnv) {
   });
 
   return { projectId, client: await auth.getClient() };
+}
+
+function getRequestedAuthorizedDomains(localEnv) {
+  const domains = new Set(['localhost', '127.0.0.1']);
+  const extraDomains = getEnv('FIREBASE_AUTHORIZED_EXTRA_DOMAINS', localEnv);
+
+  if (extraDomains) {
+    for (const domain of extraDomains.split(',')) {
+      const value = domain.trim();
+      if (value) {
+        domains.add(value);
+      }
+    }
+  }
+
+  for (const addresses of Object.values(os.networkInterfaces())) {
+    for (const address of addresses || []) {
+      if (address.family === 'IPv4' && !address.internal) {
+        domains.add(address.address);
+      }
+    }
+  }
+
+  return [...domains].sort();
+}
+
+async function syncAuthorizedDomains(client, projectId, localEnv) {
+  const configName = `projects/${projectId}/config`;
+  const currentRes = await client.request({
+    url: `https://identitytoolkit.googleapis.com/admin/v2/${configName}`,
+    method: 'GET',
+  });
+  const currentDomains = Array.isArray(currentRes.data.authorizedDomains)
+    ? currentRes.data.authorizedDomains
+    : [];
+  const requestedDomains = getRequestedAuthorizedDomains(localEnv);
+  const nextDomains = [...new Set([...currentDomains, ...requestedDomains])].sort();
+
+  const changed =
+    currentDomains.length !== nextDomains.length ||
+    currentDomains.some((domain, index) => domain !== nextDomains[index]);
+
+  if (!changed) {
+    console.log(`Authorized domains already up to date: ${nextDomains.join(', ')}`);
+    return;
+  }
+
+  const patchRes = await client.request({
+    url: `https://identitytoolkit.googleapis.com/admin/v2/${configName}?updateMask=authorizedDomains`,
+    method: 'PATCH',
+    data: {
+      name: configName,
+      authorizedDomains: nextDomains,
+    },
+  });
+
+  console.log(`Authorized domains updated: ${patchRes.data.authorizedDomains.join(', ')}`);
 }
 
 async function patchGoogleProvider(client, projectId, localEnv) {
@@ -139,6 +197,7 @@ async function main() {
   const localEnv = loadEnvFile(path.join(process.cwd(), '.env.local'));
   const { projectId, client } = await authorizedClient(localEnv);
 
+  await syncAuthorizedDomains(client, projectId, localEnv);
   await patchGoogleProvider(client, projectId, localEnv);
   await upsertOidcProvider(client, projectId, localEnv, {
     label: 'Kakao',

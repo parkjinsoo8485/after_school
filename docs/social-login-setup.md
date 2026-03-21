@@ -14,6 +14,13 @@ Open Firebase Console for project `afterschool-74294`.
 - Add `localhost` to Authorized domains
 - Enable `Google` in Sign-in method
 
+This repo's `npm run auth:configure-social` script now also syncs local development domains automatically:
+
+- `localhost`
+- `127.0.0.1`
+- current machine IPv4 addresses such as `192.168.x.x`
+- optional extra domains from `FIREBASE_AUTHORIZED_EXTRA_DOMAINS`
+
 For Kakao and Naver, plain Firebase Auth is not enough. You need:
 
 - `Firebase Authentication with Identity Platform`
@@ -102,6 +109,7 @@ Required environment variables:
 
 ```env
 GOOGLE_OAUTH_CLIENT_ID=
+FIREBASE_AUTHORIZED_EXTRA_DOMAINS=
 NEXT_PUBLIC_FIREBASE_KAKAO_PROVIDER_ID=oidc.kakao
 KAKAO_OIDC_CLIENT_ID=
 KAKAO_OIDC_CLIENT_SECRET=
@@ -140,7 +148,7 @@ Implemented behavior:
 
 `auth/unauthorized-domain`
 
-- Add `localhost` to Firebase Authorized domains
+- Run `npm run auth:configure-social` or add the current host/IP to Firebase Authorized domains
 
 `auth/invalid-provider-id`
 
@@ -154,6 +162,7 @@ Popup opens but login fails after provider redirect
 ## 8. Verification checklist
 
 - `http://localhost:3000/login` shows Google, Kakao, Naver buttons
+- `http://192.168.x.x:3000/login` works after syncing authorized domains
 - Google login opens Firebase popup and completes
 - Kakao login completes and returns to the app
 - Naver login completes and returns to the app
