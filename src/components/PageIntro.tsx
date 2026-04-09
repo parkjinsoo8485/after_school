@@ -1,8 +1,10 @@
+import React from 'react';
+
 type PageIntroProps = {
   icon: string;
   eyebrow?: string;
-  title: string;
-  description: string;
+  title: React.ReactNode;
+  description: React.ReactNode;
   align?: "left" | "center";
 };
 
@@ -24,7 +26,7 @@ export default function PageIntro({
         <p className="text-xs font-black uppercase tracking-[0.3em] text-primary/70">{eyebrow}</p>
       ) : null}
       <div className="space-y-3">
-        <h1 className="text-4xl font-black tracking-tight text-slate-900 md:text-5xl dark:text-white">
+        <h1 className="text-3xl break-keep font-black tracking-tight text-slate-900 sm:text-4xl md:text-5xl dark:text-white">
           {title}
         </h1>
         <p className="max-w-3xl text-sm leading-7 text-slate-600 md:text-base dark:text-slate-300">

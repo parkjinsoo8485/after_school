@@ -17,7 +17,7 @@ export default function InquiryPage() {
           <PageIntro
             icon="support_agent"
             eyebrow="Support"
-            title="운영팀에 문의 남기기"
+            title={<span className="whitespace-nowrap">운영팀에 문의 남기기</span>}
             description="수강 신청, 운영 일정, 결제, 준비물, 대기 상태 등 궁금한 내용을 남겨 주세요. 운영시간 내 접수 건은 순차적으로 확인합니다."
           />
 
